@@ -27,23 +27,31 @@ var Dom = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(Dom);
 
-  function Dom() {
+  function Dom(props) {
+    var _this;
+
     _classCallCheck(this, Dom);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.msg = _this.msg.bind(_assertThisInitialized(_this));
+    _this.state = {
+      error: undefined
+    };
+    return _this;
   }
 
   _createClass(Dom, [{
+    key: "msg",
+    value: function msg(e) {
+      var msg = e.target.element.value;
+      alert("msg");
+    }
+  }, {
     key: "render",
-    value: // constructor(props) {
-    //   super(props);
-    //   this.handleAddOption = this.handleAddOption.bind(this);
-    //   this.state = {
-    //     error: undefined,
-    //   };
-    // }
-    function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Hello world"));
+    value: function render() {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+        onClick: this.msg
+      }, "Hello world"));
     }
   }]);
 

@@ -11,10 +11,6 @@
   "author": "Iván Pérez",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.8",
-    "@babel/preset-react": "^7.16.7",
     "express": "^4.17.2",
     "hbs": "^4.2.0"
   },
