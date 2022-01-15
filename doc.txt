@@ -28,5 +28,8 @@ HEROKU
 5. On package.json, on the scripts object: "start": "node src/app.js"
 6. Make sure port const is set up to process.env.PORT
 7. Commit the changes to the repository
+8. git push
+9. Make sure git remote returns heroku and origin
+10. git push heroku main TO DEPLOY
 
 
