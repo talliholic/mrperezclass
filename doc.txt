@@ -2,3 +2,6 @@
 2. git status
 3. .ignore inside of it: node_modules
 4. git add .
+5. git config --global user.email "talliholic@gmail.com"
+6. git config --global user.name "talliholic"
+7. git commit -m "The message"
