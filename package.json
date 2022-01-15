@@ -1,0 +1,19 @@
+{
+  "name": "mrperezclass",
+  "version": "1.0.0",
+  "description": "Mr. Perez's interactive activities",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js -e js,hbs"
+  },
+  "keywords": [],
+  "author": "Iván Pérez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

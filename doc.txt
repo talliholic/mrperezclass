@@ -1,0 +1,4 @@
+1. git init
+2. git status
+3. .ignore inside of it: node_modules
+4. git add .
