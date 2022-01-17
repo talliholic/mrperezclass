@@ -1,0 +1,13 @@
+#container {
+  width: 900px;
+  margin: auto;
+}
+.sentence {
+  display: block;
+  font-size: 40px;
+  text-align: center;
+}
+.option {
+  width: 400px;
+  padding: 20px;
+}
