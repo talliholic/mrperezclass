@@ -21,6 +21,9 @@ app.get("", (req, res) => {
     title: "Mr. Perez's Website",
   });
 });
+app.get("/vocab", (req, res) => {
+  res.render("vocab");
+});
 
 app.get("/about", (req, res) => {
   res.render("about", {

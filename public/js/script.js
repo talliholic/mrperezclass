@@ -1,31 +1,51 @@
 const container = document.getElementById("container");
+const button = document.querySelector("button");
 
-const captions = [];
-const imagePaths = [];
+const numQuestions = 9;
 const numItems = 4;
 const numArray = [];
+const toRender = [];
+const numQArray = [];
+let page = 0;
+for (let i = 0; i < numQuestions; i++) {
+  numQArray[i] = i;
+}
+button.addEventListener("click", () => {
+  container.innerHTML = "";
+  render("Grow, Vegetables, Grow");
+});
 let randArray;
-const optionRand = Math.floor(Math.random() * numItems);
 
 function render(title) {
   fetch("data/quizzes.json").then((response) => {
     response.json().then((data) => {
       const info = data.filter((object) => object.title === title);
       const items = shuffle(info[0].images);
-      const sentence = items[0].caption;
-      //Control how many options to render
+
+      for (let i = 0; i < numQuestions; i++) {
+        toRender[i] = { sentence: items[i].caption, images: [], captions: [] };
+        const filterArray = shuffle(numQArray.filter((elem) => elem !== i));
+        for (let j = 1; j < numItems; j++) {
+          toRender[i].images[0] = items[i].path;
+          toRender[i].captions[0] = items[i].caption;
+          toRender[i].images[j] = items[filterArray[j]].path;
+          toRender[i].captions[j] = items[filterArray[j]].caption;
+        }
+      }
       for (let i = 0; i < numItems; i++) {
-        captions[i] = items[i].caption;
-        imagePaths[i] = items[i].path;
         numArray[i] = i;
         if (i === numItems - 1) {
           randArray = shuffle(numArray);
         }
       }
-      console.log(randArray);
-      buildDiv("sentence", container, sentence);
+      buildDiv("sentence", container, toRender[page].sentence);
       const options = buildDiv("options", container);
-      buildOptions(imagePaths, options, captions, randArray);
+      buildOptions(
+        toRender[page].images,
+        options,
+        toRender[page].captions,
+        randArray
+      );
     });
   });
 }
@@ -44,12 +64,6 @@ function buildDiv(clase, parent, txt) {
   element.setAttribute("class", clase);
   parent.appendChild(element);
   return element;
-}
-
-function builElem(elem, clase, parent) {
-  const element = document.createElement(elem);
-  element.setAttribute("class", clase);
-  parent.appendChild(element);
 }
 
 function buildOptions(pathArray, parent, dataArray, randArray) {
